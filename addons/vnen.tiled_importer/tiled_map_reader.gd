@@ -778,31 +778,42 @@ func build_tileset_for_scene(tilesets, source_path, options):
 					result.tile_set_texture(gid, image)
 				if options.apply_offset:
 					result.tile_set_texture_offset(gid, Vector2(0, -image.get_height()))
-						
-			if "tiles" in ts and rel_id in ts.tiles and "objectgroup" in ts.tiles[rel_id] \
-					and "objects" in ts.tiles[rel_id].objectgroup:
-				for object in ts.tiles[rel_id].objectgroup.objects:
 
-					var shape = shape_from_object(object)
+			if "tiles" in ts:
+				var has_tile = false
+				var found_id = 0
+				for tile_i in range(0, ts.tiles.size()):
+					var tile = ts.tiles[tile_i]
+					print("muraturi")
+					print(tile)
+					if str(tile.id) == rel_id:
+						found_id = tile_i
+						has_tile = true
 
-					if typeof(shape) != TYPE_OBJECT:
-						# Error happened
-						return shape
+				print("spoj: " +ts.name+" " + str(has_tile))
+				if has_tile and "objectgroup" in ts.tiles[found_id] and "objects" in ts.tiles[found_id].objectgroup:
+					for object in ts.tiles[found_id].objectgroup.objects:
 
-					var offset = Vector2(float(object.x), float(object.y))
-					if options.apply_offset:
-						offset += result.tile_get_texture_offset(gid)
-					if "width" in object and "height" in object:
-						offset += Vector2(float(object.width) / 2, float(object.height) / 2)
+						var shape = shape_from_object(object)
 
-					if object.type == "navigation":
-						result.tile_set_navigation_polygon(gid, shape)
-						result.tile_set_navigation_polygon_offset(gid, offset)
-					elif object.type == "occluder":
-						result.tile_set_light_occluder(gid, shape)
-						result.tile_set_occluder_offset(gid, offset)
-					else:
-						result.tile_add_shape(gid, shape, Transform2D(0, offset), object.type == "one-way")
+						if typeof(shape) != TYPE_OBJECT:
+							# Error happened
+							return shape
+
+						var offset = Vector2(float(object.x), float(object.y))
+						if options.apply_offset:
+							offset += result.tile_get_texture_offset(gid)
+						if "width" in object and "height" in object:
+							offset += Vector2(float(object.width) / 2, float(object.height) / 2)
+
+						if object.type == "navigation":
+							result.tile_set_navigation_polygon(gid, shape)
+							result.tile_set_navigation_polygon_offset(gid, offset)
+						elif object.type == "occluder":
+							result.tile_set_light_occluder(gid, shape)
+							result.tile_set_occluder_offset(gid, offset)
+						else:
+							result.tile_add_shape(gid, shape, Transform2D(0, offset), object.type == "one-way")
 			
 			if "properties" in ts and "custom_material" in ts.properties:
 				result.tile_set_material(gid, load(ts.properties.custom_material))
