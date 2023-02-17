@@ -25,7 +25,7 @@ extends EditorImportPlugin
 
 enum { PRESET_DEFAULT, PRESET_PIXEL_ART }
 
-const TiledMapReader = preload("tiled_map_reader.gd")
+const TileMapReader = preload("tilemap_reader.gd")
 
 func get_importer_name():
 	return "vnen.tiled_tileset_importer"
@@ -34,10 +34,7 @@ func get_visible_name():
 	return "TileSet from Tiled"
 
 func get_recognized_extensions():
-	if ProjectSettings.get_setting("tiled_importer/enable_json_format"):
-		return ["json", "tsj", "tsx"]
-	else:
-		return ["tsx"]
+	return ["json", "tsj", "tsx"]
 
 func get_save_extension():
 	return "res"
@@ -93,7 +90,7 @@ func get_option_visibility(option, options):
 	return true
 
 func import(source_file, save_path, options, r_platform_variants, r_gen_files):
-	var map_reader = TiledMapReader.new()
+	var map_reader = TileMapReader.new()
 
 	var tileset = map_reader.build_tileset(source_file, options)
 
