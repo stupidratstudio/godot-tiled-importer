@@ -48,9 +48,9 @@ Then enable the plugin on the Project Settings.
   metadata. Custom properties on tiles can be imported into the TileSet resource.
 * Map background imported as a parallax background (so it's virtually infinite)
 * Support for post-import script.
-* Tile animations.
-* Per-layer z index support.
-* Custom material support.
+* Support for tile animations.
+* Custom materials for tilesets
+* Set Z index per layer (via the ``z_index`` custom property).
 
 ## Usage (once the plugin is enabled)
 
