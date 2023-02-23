@@ -1,19 +1,11 @@
 # Tiled Map Importer Improvements
 
-**This fork will contain much more recent changes and features than the original repository - last commit was 3 years ago.**
-
-Modified to be more usable in a with newer features of Tiled and Godot.
-Added animations.
-
 This is a plugin for [Godot Engine](https://godotengine.org) to import
 `TileMap`s and `TileSet`s from the [Tiled Map Editor](http://www.mapeditor.org).
 
 **Note: This is compatible only with Godot 3.0 or later.**
 
 [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/P5P1GZ0P)
-Donate to the original author on [Ko-fi](https://ko-fi.com/georgemarques).
-
-If you would like to support this fork, purchase my game, [Indirection](https://store.steampowered.com/app/1744450/Indirection/) on Steam!
 
 ![animations](https://user-images.githubusercontent.com/45643741/148709100-9248db23-e66b-4112-a659-8cdf01acfff6.gif)
 ![Animations](https://user-images.githubusercontent.com/45643741/148708696-51493ff2-1cea-4924-980d-bf5a77f5bf26.gif)
@@ -25,17 +17,12 @@ If you would like to support this fork, purchase my game, [Indirection](https://
 
 ## Installation
 
-You can get this plugin on the Godot Asset Store! Look for "Tiled Map Importer - Latest Fork".
+Simply download it from Godot Asset Library: https://godotengine.org/asset-library/asset/158.
+
 Alternatively, you can download or clone this repository and copy the contents of the
 `addons` folder to your own project's `addons` folder.
 
 Then enable the plugin on the Project Settings.
-
-## Fork Additions
-
-* Tile animations.
-* Per-layer z index support.
-* Custom material support.
 
 ## Original Features
 
@@ -59,6 +46,9 @@ Then enable the plugin on the Project Settings.
   metadata. Custom properties on tiles can be imported into the TileSet resource.
 * Map background imported as a parallax background (so it's virtually infinite)
 * Support for post-import script.
+* Tile animations.
+* Per-layer z index support.
+* Custom material support.
 
 ## Usage (once the plugin is enabled)
 
